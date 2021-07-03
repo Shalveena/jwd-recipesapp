@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="container-fluid">
+<html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -16,100 +16,182 @@
     <title>Yummy Bites</title>
   </head>
   <body>
-    <header>
-      <h1>Yummy Bites</h1>
-    </header>
+    <div class="container text-center mt-4">
+      <header class="row">
+        <div class="col">
+          <h1>Yummy Bites</h1>
+        </div>
+      </header>
 
-    <main>
-      <!-- MODAL -->
-      <section>
-        <!-- Button trigger modal -->
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#NewRecModal"
-        >
-          Add Recipe
-        </button>
+      <main>
+        <section class="row mt-5">
+          <div class="col">
+            <!-- Button trigger modal -->
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#NewRecModal"
+            >
+              Add Recipe
+            </button>
+          </div>
 
-        <!-- Modal content -->
-        <div
-          class="modal fade"
-          id="NewRecModal"
-          tabindex="-1"
-          aria-labelledby="NewRecModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="newRecModalLabel">New Recipe</h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
+          <!-- MODAL -->
+          <div
+            class="modal fade"
+            id="NewRecModal"
+            tabindex="-1"
+            aria-labelledby="NewRecModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="newRecModalLabel">New Recipe</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <!-- FORM -->
+                  <form>
+                    <div class="mb-3 form-group">
+                      <label for="recipe-title" class="form-label"
+                        >Recipe title</label
+                      >
+                      <input
+                        type="text"
+                        name="recipe-title"
+                        id="recipe-title"
+                        class="form-control"
+                        placeholder="Write recipe title here"
+                        aria-describedby="recipeTitleHelp"
+                      />
+                      <div id="recipeTitleHelp" class="form-text">
+                        The recipe's title must not be empty.
+                      </div>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                      <label for="ingredients" class="form-label"
+                        >Ingredients</label
+                      >
+                      <textarea
+                        name="ingredients"
+                        id="ingredients"
+                        class="form-control"
+                        placeholder="List the ingredients here"
+                        aria-describedby="recipeIngredientsHelp"
+                        rows="20"
+                      ></textarea>
+                      <div id="recipeIngredientsHelp" class="form-text">
+                        The recipe's ingredients list must not be empty.
+                      </div>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                      <label for="method" class="form-label">Method</label>
+                      <textarea
+                        name="method"
+                        id="method"
+                        class="form-control"
+                        placeholder="Write method for the recipe here"
+                        aria-describedby="recipeMethodHelp"
+                        rows="30"
+                      ></textarea>
+                      <div id="recipeMethodHelp" class="form-text">
+                        The recipe's method must not be empty.
+                      </div>
+                    </div>
+
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary">
+                      Submit
+                    </button>
+                  </form>
+                </div>
               </div>
-              <article class="modal-body">
-                <!-- FORM -->
-                <form>
-                  <div class="mb-3">
-                    <label for="recipe-title" class="form-label"
-                      >Recipe title</label
-                    >
-                    <input
-                      type="text"
-                      name="recipe-title"
-                      id="recipe-title"
-                      class="form-control"
-                      placeholder="Write recipe title here"
-                      aria-describedby="recipeTitleHelp"
-                    />
-                    <div id="recipeTitleHelp" class="form-text">
-                      The recipe's title must not be empty.
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="ingredients" class="form-label"
-                      >Ingredients</label
-                    >
-                    <input
-                      type="text"
-                      name="ingredients"
-                      id="ingredients"
-                      class="form-control"
-                      placeholder="List the ingredients here"
-                      aria-describedby="recipeIngredientsHelp"
-                    />
-                    <div id="recipeIngredientsHelp" class="form-text">
-                      The recipe's ingredients list must not be empty.
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="method" class="form-label">Method</label>
-                    <input
-                      type="text"
-                      name="method"
-                      id="method"
-                      class="form-control"
-                      placeholder="Write method for the recipe here"
-                      aria-describedby="recipeMethodHelp"
-                    />
-                    <div id="recipeMethodHelp" class="form-text">
-                      The recipe's method must not be empty.
-                    </div>
-                  </div>
-                  <!-- Submit button -->
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-              </article>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+
+        <!-- Recipe cards start here -->
+
+        <section class="card my-5 text-start">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <h4 class="card-title">
+                  Indian inspired chickpeas and kale curry
+                </h4>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <h5 class="card-text">Ingredients</h5>
+                <ul>
+                  <li>1/2 onion, chopped</li>
+                  <li>6 cloves garlic, finely chopped</li>
+                  <li>2 tsp sweet paprika powder</li>
+                  <li>4 tsp cumin powder</li>
+                  <li>1 tsp turmeric</li>
+                  <li>1 tsp salt</li>
+                  <li>2 cans of chickpeas, drained and rinsed</li>
+                  <li>1 cup vegetable broth</li>
+                  <li>4 cups of kale</li>
+                  <li>4 Tbsp olive oil</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <h5 class="card-text">Method</h5>
+                <ol>
+                  <li>
+                    Heat the olive oil in a frying pan on low heat. When the oil
+                    is warm, add the onions and fry until the onions are soft.
+                  </li>
+                  <li>
+                    Add garlic and continue to fry until the garlic starts to
+                    get crispy/starts to change colour.
+                  </li>
+                  <li>
+                    Add the spices: sweet paprika, cumin and turmeric. Cook for
+                    just a few seconds, careful not to let it burn!
+                  </li>
+                  <li>
+                    Add the chickpeas and cook, uncovered for a few minutes to
+                    allow the chickpeas and spices to fry and come together.
+                  </li>
+                  <li>
+                    Add a dash of water and continue to cook the chickpeas,
+                    covered, allowing them to absorb the flavours. Check from
+                    time to time that the chickpeas are not getting stuck to the
+                    pan; if they are, add some more water as needed.
+                  </li>
+                  <li>
+                    Smash about half of the chickpeas with the back of the
+                    spoon. Add the stock, mix well, cover and let it simmer for
+                    another couple of minutes.
+                  </li>
+                  <li>
+                    Add the kale, cover and cook until the kale is cooked to
+                    your liking. Mix it from time to time to allow the kale to
+                    mix with the rest of the curry and to cook better.
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
     <!-- BOOTSTRAP -->
 
     <!-- Optional JavaScript; choose one of the two! -->

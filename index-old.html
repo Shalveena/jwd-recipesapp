@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yummy Bites</title>
+  </head>
+  <body>
+    <header>
+      <h1>Yummy Bites</h1>
+    </header>
+    <main>
+      <section>
+        <!-- Open the Modal -->
+        <button type="button" data-open="modal-add">New Recipe</button>
+        <!-- The Modal -->
+        <div id="modal-add">
+          <!-- Modal content -->
+          <header>
+            New recipe
+            <button data-close>X</button>
+          </header>
+          <section>
+            <p>
+              <strong
+                >Press X, Esc, or click outside the modal to close it</strong
+              >
+            </p>
+          </section>
+          <!-- Section containing the form -->
+          <section>
+            <form>
+              <label for="recipe-title">Recipe title:</label>
+              <input type="text" name="recipe-title" id="recipe-title" />
+              <div>
+                <label for="ingredients">Ingredients</label>
+              </div>
+              <textarea id="ingredients" name="ingredients" placeholder="Enter your ingredients here" rows="20" cols="80"></textarea>
+              <div><label for="ingredients">Method</label></div>
+              <textarea id="method" name="method" placeholder="Write your method here" rows="20" cols="80"></textarea>
+              <div><input type="submit" value="Add"></input></div>
+            </form>
+          </section>
+        </div>
+      </section>
+
+      <section>
+        <article>
+          <h2>Indian inspired chickpeas and kale curry</h2>
+          <h2>Ingredients</h2>
+          <ul>
+            <li>1/2 onion, chopped</li>
+            <li>6 cloves garlic, finely chopped</li>
+            <li>2 tsp sweet paprika powder</li>
+            <li>4 tsp cumin powder</li>
+            <li>1 tsp turmeric</li>
+            <li>1 tsp salt</li>
+            <li>2 cans of chickpeas, drained and rinsed</li>
+            <li>1 cup vegetable broth</li>
+            <li>4 cups of kale</li>
+            <li>4 Tbsp olive oil</li>
+          </ul>
+
+          <h2>Method</h2>
+          <ol>
+            <li>
+              Heat the olive oil in a frying pan on low heat. When the oil is
+              warm, add the onions and fry until the onions are soft.
+            </li>
+            <li>
+              Add garlic and continue to fry until the garlic starts to get
+              crispy/starts to change colour.
+            </li>
+            <li>
+              Add the spices: sweet paprika, cumin and turmeric. Cook for just a
+              few seconds, careful not to let it burn!
+            </li>
+            <li>
+              Add the chickpeas and cook, uncovered for a few minutes to allow
+              the chickpeas and spices to fry and come together.
+            </li>
+            <li>
+              Add a dash of water and continue to cook the chickpeas, covered,
+              allowing them to absorb the flavours. Check from time to time that
+              the chickpeas are not getting stuck to the pan; if they are, add
+              some more water as needed.
+            </li>
+            <li>
+              Smash about half of the chickpeas with the back of the spoon. Add
+              the stock, mix well, cover and let it simmer for another couple of
+              minutes.
+            </li>
+            <li>
+              Add the kale, cover and cook until the kale is cooked to your
+              liking. Mix it from time to time to allow the kale to mix with the
+              rest of the curry and to cook better.
+            </li>
+            <li>Serve with rice and enjoy 🥘</li>
+          </ol>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
