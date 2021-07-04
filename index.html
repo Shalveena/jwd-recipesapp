@@ -65,7 +65,7 @@
                 </div>
                 <div class="modal-body">
                   <!-- FORM -->
-                  <form class="form">
+                  <form class="form" novalidate>
                     <div class="mb-3 form-group">
                       <label for="recipe-title" class="form-label"
                         >Recipe title</label
@@ -77,9 +77,13 @@
                         class="form-control"
                         placeholder="Write recipe title here"
                         aria-describedby="recipeTitleHelp"
+                        required
                       />
                       <div id="recipeTitleHelp" class="form-text">
                         The recipe's title must not be empty.
+                      </div>
+                      <div class="invalid-feedback">
+                        Please choose a title.
                       </div>
                     </div>
 
@@ -94,9 +98,13 @@
                         placeholder="List the ingredients here"
                         aria-describedby="recipeIngredientsHelp"
                         rows="20"
+                        required
                       ></textarea>
                       <div id="recipeIngredientsHelp" class="form-text">
                         The recipe's ingredients list must not be empty.
+                      </div>
+                      <div class="invalid-feedback">
+                        Please add ingredients.
                       </div>
                     </div>
 
@@ -109,9 +117,13 @@
                         placeholder="Write method for the recipe here"
                         aria-describedby="recipeMethodHelp"
                         rows="30"
+                        required
                       ></textarea>
                       <div id="recipeMethodHelp" class="form-text">
                         The recipe's method must not be empty.
+                      </div>
+                      <div class="invalid-feedback">
+                        Please add method.
                       </div>
                     </div>
 

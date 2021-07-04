@@ -7,37 +7,33 @@ const ingredients = document.querySelector("#ingredients");
 const method = document.querySelector("#method");
 
 // Function to add new recipe:
+const recipes = [];
 
-// Function for when the form fields are empty:
+const addRecipe = function (recipeTitle, ingredients, method) {
+  const newRecipe = {
+    recipeTitle: recipeTitle,
+    ingredients: ingredients,
+    method: method,
+  };
 
-let validForm = true;
+  recipes.push(newRecipe);
+};
 
+// Function to check validation
 form.addEventListener("submit", function (event) {
-  if (!recipeTitle.value) {
-    recipeTitle.style.border = "solid #FF3C3C";
+  if (!form.checkValidity()) {
     event.preventDefault();
-    validForm = false;
-  }
-  if (!ingredients.value) {
-    ingredients.style.border = "solid #FF3C3C";
-    event.preventDefault();
-    validForm = false;
-  }
-  if (!method.value) {
-    method.style.border = "solid #FF3C3C";
-    event.preventDefault();
-    validForm = false;
+    event.stopPropagation();
   }
 
-  // If the form is valid, add the new recipe and render it
-});
+  form.classList.add("was-validated");
 
-// form.addEventListener("submit", function (event) {
-//   if (!form.checkValidity()) {
-//     event.preventDefault();
-//     event.stopPropagation();
-//   }
-// });
-
-// const addBtn = document.querySelector(".add-btn");
-// console.log(addBtn);
+  if (form.checkValidity()) {
+    addRecipe(recipeTitle.value, ingredients.value, method.value);
+    console.log(recipes);
+    event.preventDefault();
+  }
+  //TODO: figure out how to close modal when Add button clicked and form valid. 
+  // TODO:Remove ability to exit modal when clicked outside
+  // TODO: Add clear button
+}
