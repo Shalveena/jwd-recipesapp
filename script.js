@@ -33,7 +33,7 @@ form.addEventListener("submit", function (event) {
     console.log(recipes);
     event.preventDefault();
   }
-  //TODO: figure out how to close modal when Add button clicked and form valid. 
-  // TODO:Remove ability to exit modal when clicked outside
-  // TODO: Add clear button
-}
+});
+//TODO: figure out how to close modal when Add button clicked and form valid.
+// TODO:Remove ability to exit modal when clicked outside
+// TODO: Add clear button
