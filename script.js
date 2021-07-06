@@ -92,15 +92,30 @@ form.addEventListener("submit", function (event) {
 
   form.classList.add("was-validated");
 
-  // If form valid, add recipe
+  // If form valid, add recipe and render
   if (form.checkValidity()) {
     addRecipe(recipeTitle.value, ingredients.value, method.value);
-    console.log(recipes);
+    // close modal
+    document.querySelector("#NewRecModal").hide();
+    // reset form
+    form.reset();
+
     render();
     event.preventDefault();
   }
 });
-//TODO: figure out how to close modal when Add button clicked and form valid.
+
+// Reset form fields when reset button clicked
+
+// const reset = document.querySelector("#reset-btn");
+// reset.addEventListener("click", () => {
+//   taskNameErr.innerHTML = "";
+//   assignedErr.innerHTML = "";
+//   newDescriptErr.innerHTML = "";
+//   dueDateErr.innerHTML = "";
+//   taskStatusErr.innerHTML = "";
+// });
+
 // TODO:Remove ability to exit modal when clicked outside
 // TODO: Add clear button
 // TODO: Add delete button to allow deletion of recipes
