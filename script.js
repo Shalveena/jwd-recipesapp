@@ -6,6 +6,7 @@ const recipeTitle = document.querySelector("#recipe-title");
 const ingredients = document.querySelector("#ingredients");
 const method = document.querySelector("#method");
 
+// Need this line of code for the add button to close the modal
 const newRecModal = new bootstrap.Modal(
   document.getElementById("NewRecModal"),
   {}
