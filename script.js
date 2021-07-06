@@ -106,9 +106,23 @@ const render = function () {
       deleteRecipe(recipeID);
       //IMP: need to call render function again so that it can render new recipes and create new event handlers for the delete buttons
       render();
+      saveLocal();
     })
   );
 };
+
+// Function to save to local storage
+const saveLocal = function () {
+  const recipesJson = JSON.stringify(recipes);
+  // Store the string in localStorage (key:'recipes', value: 'tasksJson')
+  localStorage.setItem("recipes", recipesJson);
+  // Convert id variable to string IMP: need to store the id variable in local storage because when we later reload the page, the id variable will be set to 0 again, but we want to load from local storage and make sure the new recipes that are added afterward don't start with id 0 again.
+  const localId = JSON.stringify(id);
+  // Store in localStorage.
+  localStorage.setItem("id", localId);
+};
+
+// Function to load from local storage
 
 // Function to check validation
 form.addEventListener("submit", function (event) {
@@ -122,7 +136,7 @@ form.addEventListener("submit", function (event) {
   // If form valid, add recipe and render
   if (form.checkValidity()) {
     addRecipe(recipeTitle.value, ingredients.value, method.value);
-    console.log(recipes);
+    saveLocal();
     // close modal
     //document.querySelector("#NewRecModal").hide();
     // reset form
@@ -140,6 +154,5 @@ render();
 
 // TODO:Remove ability to exit modal when clicked outside
 // TODO: Add clear button (how to unclick it, and it doesn't clear error messages!)
-// TODO: Add delete button to allow deletion of recipes
 // TODO: Save recipes in local storage
 // TODO: Create readme showing steps to run the app locally, list of tech used, section describing the requirements and how you met them.
