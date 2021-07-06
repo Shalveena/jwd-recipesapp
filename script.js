@@ -123,6 +123,19 @@ const saveLocal = function () {
 };
 
 // Function to load from local storage
+const loadLocal = function () {
+  // check if any recipes already in local storage. If so, get it, change it back into an array and assign it to the recipes array.
+  if (localStorage.getItem("recipes")) {
+    const recipesJson = localStorage.getItem("recipes");
+    recipes = JSON.parse(recipesJson);
+  }
+
+  //do same with id
+  if (localStorage.getItem("id")) {
+    const localId = localStorage.getItem("id");
+    id = parseInt(localId);
+  }
+};
 
 // Function to check validation
 form.addEventListener("submit", function (event) {
@@ -138,8 +151,6 @@ form.addEventListener("submit", function (event) {
     addRecipe(recipeTitle.value, ingredients.value, method.value);
     saveLocal();
     // close modal
-    //document.querySelector("#NewRecModal").hide();
-    // reset form
     form.reset();
     newRecModal.hide();
     render();
@@ -148,11 +159,10 @@ form.addEventListener("submit", function (event) {
   }
 });
 
+loadLocal();
 render();
 
 // Reset form fields when reset button clicked
 
-// TODO:Remove ability to exit modal when clicked outside
 // TODO: Add clear button (how to unclick it, and it doesn't clear error messages!)
-// TODO: Save recipes in local storage
 // TODO: Create readme showing steps to run the app locally, list of tech used, section describing the requirements and how you met them.
