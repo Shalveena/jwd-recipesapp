@@ -23,13 +23,13 @@ Due to the time constraint, I decided to use Bootstrap instead of CSS in order t
 
 The starting page of the app is simple - showing only the title and the Add Recipe button.
 
-    ![Landing page of the website (images/landingpage)]
+    ![Landing page of the website](images/landingpage)
 
 The Add Recipe button opens up a new modal. I chose to make the modal extra long so that the user can easily fit the ingredients and method of the recipe into it. The modal includes a form that has three input fields, an add button and a reset button.
 
 Because recipes could be quite long, I did not wanted to have a way to display only a part of each recipe, so that more recipes could be displayed on the page and less scrolling would be needed by the user. To achieve this, I added an accordion after the heading "Method", so that the title and ingredients of the recipe show by default but the method is hiden inside the accordion. When the user clicks "See more", the accordion is expanded to show the rest of the recipe.
 
-    ![Closed accordion (images/accordion)]
+    ![Closed accordion](images/accordion)
 
 I chose to put the delete button just below the accordion, but make it visible right at the start (without requiring the user to click anything in order to show it). That way, the user can delete recipes with just one click.
 
