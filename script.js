@@ -6,11 +6,18 @@ const recipeTitle = document.querySelector("#recipe-title");
 const ingredients = document.querySelector("#ingredients");
 const method = document.querySelector("#method");
 
+const newRecModal = new bootstrap.Modal(
+  document.getElementById("NewRecModal"),
+  {}
+);
+
 // Function to add new recipe:
-const recipes = [];
+let recipes = [];
+let id = 0;
 
 const addRecipe = function (recipeTitle, ingredients, method) {
   const newRecipe = {
+    id: id++,
     recipeTitle: recipeTitle,
     ingredients: ingredients,
     method: method,
@@ -20,9 +27,9 @@ const addRecipe = function (recipeTitle, ingredients, method) {
 };
 
 // Function to create html of the new recipe:
-const createRecipeHtml = (recipeTitle, ingredients, method) => {
+const createRecipeHtml = (id, recipeTitle, ingredients, method) => {
   const html = `
-    <section class="card my-5">
+    <section class="card my-5" data-recipe-id="${id}">
     <div class="card-body">
       <div class="row">
         <div class="col">
@@ -56,6 +63,7 @@ const createRecipeHtml = (recipeTitle, ingredients, method) => {
               </div>
             </div>
           </div>
+          <button type="button" class="btn btn-primary mt-2 delete-btn">Delete</button>
         </div>
       </div>
     </div>
@@ -72,6 +80,7 @@ const render = function () {
   // For each recipe from the recipes array, create the html and push it to the recipesHTMLArr. Then, join the recipes from recipesHTMLArr into a string and change the HTML code.
   recipes.forEach((recipe) => {
     const recipeHTML = createRecipeHtml(
+      recipe.id,
       recipe.recipeTitle,
       recipe.ingredients,
       recipe.method
@@ -82,6 +91,20 @@ const render = function () {
   const recipesList = document.querySelector("#recipes-list");
   recipesList.innerHTML = recipesHTMLArr.join("\n");
 };
+
+// // Function to delete recipe:
+// const deleteRecipe = function (recipeId) {
+//   const newRecipesArr = recipes.filter((recipe) => recipe.id !== recipeId);
+//   recipes = newRecipesArr;
+// };
+
+// const deleteBtn = document.querySelector(".delete-btn");
+// console.log(deleteBtn);
+// deleteBtn.addEventListener("click", (event) => {
+//   const clickedBtn = event.target;
+//   const recipeID = parseInt(clickedBtn.dataset.recipeId);
+//   deleteRecipe(recipeID);
+// });
 
 // Function to check validation
 form.addEventListener("submit", function (event) {
@@ -95,11 +118,12 @@ form.addEventListener("submit", function (event) {
   // If form valid, add recipe and render
   if (form.checkValidity()) {
     addRecipe(recipeTitle.value, ingredients.value, method.value);
+    console.log(recipes);
     // close modal
-    document.querySelector("#NewRecModal").hide();
+    //document.querySelector("#NewRecModal").hide();
     // reset form
     form.reset();
-
+    newRecModal.hide();
     render();
     event.preventDefault();
   }
@@ -107,17 +131,8 @@ form.addEventListener("submit", function (event) {
 
 // Reset form fields when reset button clicked
 
-// const reset = document.querySelector("#reset-btn");
-// reset.addEventListener("click", () => {
-//   taskNameErr.innerHTML = "";
-//   assignedErr.innerHTML = "";
-//   newDescriptErr.innerHTML = "";
-//   dueDateErr.innerHTML = "";
-//   taskStatusErr.innerHTML = "";
-// });
-
 // TODO:Remove ability to exit modal when clicked outside
-// TODO: Add clear button
+// TODO: Add clear button (how to unclick it, and it doesn't clear error messages!)
 // TODO: Add delete button to allow deletion of recipes
 // TODO: Save recipes in local storage
 // TODO: Create readme showing steps to run the app locally, list of tech used, section describing the requirements and how you met them.
