@@ -63,7 +63,7 @@ const createRecipeHtml = (id, recipeTitle, ingredients, method) => {
               </div>
             </div>
           </div>
-          <button type="button" class="btn btn-primary mt-2 delete-btn">Delete</button>
+          <button type="button" class="btn btn-primary mt-2 delete-btn" data-recipe-id="${id}">Delete</button>
         </div>
       </div>
     </div>
@@ -71,6 +71,12 @@ const createRecipeHtml = (id, recipeTitle, ingredients, method) => {
 
 `;
   return html;
+};
+
+// Function to delete recipe:
+const deleteRecipe = function (recipeId) {
+  const newRecipesArr = recipes.filter((recipe) => recipe.id !== recipeId);
+  recipes = newRecipesArr;
 };
 
 // Function to render recipes:
@@ -90,21 +96,19 @@ const render = function () {
 
   const recipesList = document.querySelector("#recipes-list");
   recipesList.innerHTML = recipesHTMLArr.join("\n");
+
+  // create an event listener for the delete button. When clicked, delete the recipe
+  const deleteBtns = document.querySelectorAll(".delete-btn");
+  deleteBtns.forEach((deleteBtn) =>
+    deleteBtn.addEventListener("click", (event) => {
+      const clickedBtn = event.target;
+      const recipeID = parseInt(clickedBtn.dataset.recipeId);
+      deleteRecipe(recipeID);
+      //IMP: need to call render function again so that it can render new recipes and create new event handlers for the delete buttons
+      render();
+    })
+  );
 };
-
-// // Function to delete recipe:
-// const deleteRecipe = function (recipeId) {
-//   const newRecipesArr = recipes.filter((recipe) => recipe.id !== recipeId);
-//   recipes = newRecipesArr;
-// };
-
-// const deleteBtn = document.querySelector(".delete-btn");
-// console.log(deleteBtn);
-// deleteBtn.addEventListener("click", (event) => {
-//   const clickedBtn = event.target;
-//   const recipeID = parseInt(clickedBtn.dataset.recipeId);
-//   deleteRecipe(recipeID);
-// });
 
 // Function to check validation
 form.addEventListener("submit", function (event) {
@@ -125,9 +129,12 @@ form.addEventListener("submit", function (event) {
     form.reset();
     newRecModal.hide();
     render();
+
     event.preventDefault();
   }
 });
+
+render();
 
 // Reset form fields when reset button clicked
 
