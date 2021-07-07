@@ -165,5 +165,7 @@ render();
 
 // Reset form fields when reset button clicked
 
-// TODO: Add clear button (how to unclick it, and it doesn't clear error messages!)
-// TODO: Create readme showing steps to run the app locally, list of tech used, section describing the requirements and how you met them.
+// TODO: Improve clear button (how to unclick it, and it doesn't clear error messages!)
+// TODO: How to add images to ReadMe
+// TODO: Improve validation
+// TODO: Make lines on new line in text area (https://www.geeksforgeeks.org/how-to-add-line-breaks-to-an-html-textarea/)
