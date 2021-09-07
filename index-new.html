@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="./styles-new.css" />
+    <script></script>
+    <title>Yummy Bites Two</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <h1 class="main-heading">Yummy Bites</h1>
+      <div class="btn-container">
+        <button class="add-btn">Add New Recipe</button>
+      </div>
+    </header>
+
+    <div>
+      <form class="modal display-none">
+        <h2>New Recipe</h2>
+        <button class="close-modal">&times;</button>
+        <label for="title">Recipe title</label>
+        <input type="text" id="title" />
+        <label for="ingredients">Ingredients</label>
+        <textarea
+          name="ingredients"
+          id="ingredients"
+          cols="30"
+          rows="10"
+        ></textarea>
+        <label for="method">Method</label>
+        <textarea name="method" id="method" cols="30" rows="10"></textarea>
+        <button>Add</button>
+        <button>Clear</button>
+      </form>
+    </div>
+
+    <main>
+      <article class="container">
+        <h2 class="recipe-title">Indian inspired chickpeas and kale curry</h2>
+
+        <div class="recipe-contents">
+          <section>
+            <h3>Ingredients</h3>
+            <p>Ingredients list</p>
+          </section>
+          <section>
+            <h3>Method</h3>
+            <p>Method explanation</p>
+          </section>
+        </div>
+      </article>
+    </main>
+    <div class="overlay"></div>
+  </body>
+</html>
