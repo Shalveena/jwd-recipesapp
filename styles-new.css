@@ -16,6 +16,7 @@ body {
   color: #444;
   line-height: 1.5;
   min-height: 100%;
+  min-width: 100%;
   background-image: linear-gradient(to left top, #008494, #00b6be, #12ebe2);
   /* background-size: cover; */
   background-attachment: fixed;
@@ -85,13 +86,14 @@ body {
 
 /* --- Form ---------------------------------------------------- */
 
-.display-none {
+.hidden {
   visibility: hidden;
 }
 
-/* .form-container {
+.form-container {
   pointer-events: none;
-} */
+}
+
 .form-container {
   position: absolute;
   top: 50%;

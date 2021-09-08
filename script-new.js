@@ -11,15 +11,15 @@ const overlay = document.querySelector("#overlay");
 
 // Open Modal
 const openModal = () => {
-  modal.classList.remove("display-none");
-  overlay.classList.remove("display-none");
+  modal.classList.remove("hidden");
+  overlay.classList.remove("hidden");
 };
 
 // Close Modal
 
 const closeModal = () => {
-  modal.classList.add("display-none");
-  overlay.classList.add("display-none");
+  modal.classList.add("hidden");
+  overlay.classList.add("hidden");
 };
 // ---- Event Handlers ------------------------------------------------
 
