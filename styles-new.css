@@ -86,12 +86,12 @@ body {
 /* --- Form ---------------------------------------------------- */
 
 .display-none {
-  display: none;
+  visibility: hidden;
 }
 
-.form-container {
+/* .form-container {
   pointer-events: none;
-}
+} */
 .form-container {
   position: absolute;
   top: 50%;
@@ -106,6 +106,8 @@ body {
 }
 
 .modal {
+  pointer-events: auto;
+
   position: relative;
   padding: 1rem 1.5rem;
   background-color: #fff;
@@ -160,6 +162,7 @@ body {
   font-size: 3rem;
   background: none;
   color: #444;
+  cursor: pointer;
 }
 
 .btn-container {
