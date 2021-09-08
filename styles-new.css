@@ -90,6 +90,9 @@ body {
 }
 
 .form-container {
+  pointer-events: none;
+}
+.form-container {
   position: absolute;
   top: 50%;
   left: 50%;
