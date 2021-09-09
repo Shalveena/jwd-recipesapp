@@ -23,25 +23,36 @@
       <div class="form-container hidden">
         <form id="modal" class="modal">
           <h2>New Recipe</h2>
-          <button class="close-modal">&times;</button>
+          <button id="close-modal" class="close-modal">&times;</button>
 
-          <label for="title">Recipe title</label>
-          <input type="text" id="title" />
+          <div id="form-control" class="form-control">
+            <label for="title">Recipe title</label>
+            <input type="text" id="title" />
+            <small for="title" class="hidden">error message</small>
+          </div>
 
-          <label for="ingredients">Ingredients</label>
-          <textarea
-            name="ingredients"
-            id="ingredients"
-            cols="30"
-            rows="10"
-          ></textarea>
+          <div id="form-control" class="form-control">
+            <label for="ingredients">Ingredients</label>
+            <textarea
+              name="ingredients"
+              id="ingredients"
+              cols="30"
+              rows="10"
+            ></textarea>
+            <small class="hidden">error message</small>
+          </div>
 
-          <label for="method">Method</label>
-          <textarea name="method" id="method" cols="30" rows="10"></textarea>
+          <div id="form-control" class="form-control">
+            <label for="method">Method</label>
+            <textarea name="method" id="method" cols="30" rows="10"></textarea>
+            <small class="hidden">error message</small>
+          </div>
 
           <div class="btn-container">
-            <button class="button">Add</button>
-            <button class="button">Clear</button>
+            <button class="button" type="submit">Add</button>
+            <button id="clear-btn" class="button clear" type="reset">
+              Clear
+            </button>
           </div>
         </form>
       </div>

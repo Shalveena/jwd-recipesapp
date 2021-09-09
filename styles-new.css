@@ -90,9 +90,9 @@ body {
   visibility: hidden;
 }
 
-.form-container {
+/* .form-container {
   pointer-events: none;
-}
+} */
 
 .form-container {
   position: absolute;
@@ -108,7 +108,7 @@ body {
 }
 
 .modal {
-  pointer-events: auto;
+  /* pointer-events: auto; */
 
   position: relative;
   padding: 1rem 1.5rem;
@@ -135,7 +135,7 @@ body {
   display: block;
   box-sizing: border-box;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   padding: 0.5rem;
   border: 0.05rem #dadada solid;
 }
@@ -144,7 +144,7 @@ body {
   display: block;
   box-sizing: border-box;
   width: 100%;
-  margin-bottom: 1.3rem;
+  margin-bottom: 2rem;
   padding: 0.5rem;
   border: 0.05rem #dadada solid;
   /* font-size: 1.25rem; */
@@ -175,8 +175,8 @@ body {
 
 .button {
   cursor: pointer;
-  background-color: #00b6be;
-  border: 0.05rem #008494 solid;
+  background-color: #3498db;
+  border: 0.05rem #3498db solid;
   color: #fff;
   border-radius: 0.5rem;
   padding: 0.4rem 1rem;
@@ -184,6 +184,11 @@ body {
   letter-spacing: 0.1rem;
   margin: 0.5rem 1rem;
   display: inline-block;
+}
+
+.clear {
+  background-color: #9ec6e0;
+  border: 0.05rem #9ec6e0 solid;
 }
 /* --- Overlay ------------------------------------------------- */
 
@@ -196,4 +201,40 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(3px);
   z-index: 5;
+}
+
+/* --- Validation ---------------------------------------------- */
+
+.form-control {
+  position: relative;
+}
+
+.form-control small {
+  position: absolute;
+  bottom: -1.3rem;
+  left: 0;
+  /* color: #e74c3c; */
+  /* visibility: hidden; */
+}
+
+.form-control.error small {
+  color: #e74c3c;
+}
+
+.form-control.success small {
+  color: #2ecc71;
+}
+
+/* .form-control.error small {
+  visibility: visible;
+} */
+
+.form-control.success input,
+.form-control.success textarea {
+  border-color: #2ecc71;
+}
+
+.form-control.error input,
+.form-control.error textarea {
+  border-color: #e74c3c;
 }
