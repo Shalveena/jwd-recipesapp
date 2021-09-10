@@ -98,9 +98,7 @@ const reformatter = (element) => {
 // Check length
 
 const checkLength = (input, min) => {
-  console.log("checklength called but length not checked");
-  console.log(typeof input.value.trim());
-  if (input.value.trim() !== "" && input.value.trim() < min) {
+  if (input.value.trim().length !== 0 && input.value.trim().length < min) {
     console.log("length being checked");
     showError(
       input,
@@ -123,6 +121,8 @@ modal.addEventListener("submit", (e) => {
   e.preventDefault();
   checkRequired(formTitle, ingredients, method);
   checkLength(formTitle, 3);
+  checkLength(formIngredients, 10);
+  checkLength(formMethod, 10);
 });
 
 // Event listener for Add New Recipe Button (to open modal)
