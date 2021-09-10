@@ -217,11 +217,13 @@ body {
   /* visibility: hidden; */
 }
 
-.form-control.error small {
+input.error + small,
+textarea.error + small {
   color: #e74c3c;
 }
 
-.form-control.success small {
+input.success + small,
+textarea.success + small {
   color: #2ecc71;
 }
 
@@ -229,12 +231,12 @@ body {
   visibility: visible;
 } */
 
-.form-control.success input,
-.form-control.success textarea {
+input.success,
+textarea.success {
   border-color: #2ecc71;
 }
 
-.form-control.error input,
-.form-control.error textarea {
+input.error,
+textarea.error {
   border-color: #e74c3c;
 }

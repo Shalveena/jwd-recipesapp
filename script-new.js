@@ -18,7 +18,7 @@ const overlay = document.querySelector("#overlay");
 
 // Node Lists
 const smallElNodeList = modal.querySelectorAll("small");
-const formControlNodeList = modal.querySelectorAll("#form-control");
+// const formControlNodeList = modal.querySelectorAll(".form-control");
 
 // ---- Function ------------------------------------------------------
 
@@ -33,21 +33,58 @@ const openModal = () => {
 const closeModal = () => {
   modal.classList.add("hidden");
   overlay.classList.add("hidden");
-  for (let i = 0; i < smallElNodeList.length; i++) {
-    smallElNodeList[i].classList.add("hidden");
-  }
+};
+
+// Function to remove class
+
+const removeClass = (text, ...input) => {
+  input.forEach((input) => {
+    input.classList.remove(text);
+  });
+};
+
+// Function to add class
+
+const addClass = (text, ...input) => {
+  input.forEach((input) => {
+    input.classList.add(text);
+  });
 };
 
 // ---- Validation ----
 
+// Show error
+
+const showError = (input, message) => {
+  const small = document.querySelector(`#small-${input.id}`);
+
+  input.classList.remove("success");
+  input.classList.add("error");
+
+  small.classList.remove("hidden");
+  small.textContent = message;
+};
+
+// Show success
+
+const showSuccess = (input, index) => {
+  const small = document.querySelector(`#small-${input.id}`);
+
+  input.classList.remove("error");
+  input.classList.add("success");
+
+  small.classList.remove("hidden");
+  small.textContent = "All good :)";
+};
+
 // Check required
 
 const checkRequired = (...inputs) => {
-  inputs.forEach((input, index) => {
+  inputs.forEach((input) => {
     if (input.value.trim() === "") {
-      showError(input, index, `${reformatter(input)} is required`);
+      showError(input, `${reformatter(input)} is required`);
     } else {
-      showSuccess(input, index);
+      showSuccess(input);
     }
   });
 };
@@ -62,50 +99,31 @@ const reformatter = (element) => {
 
 const checkLength = (input, min) => {
   console.log("checklength called but length not checked");
+  console.log(typeof input.value.trim());
   if (input.value.trim() !== "" && input.value.trim() < min) {
     console.log("length being checked");
     showError(
       input,
-      index,
       `${reformatter(input)} must be more than ${min} characters`
     );
   }
 };
 
-const showError = (input, message) {
-  const smallElem = modal.querySelector(`small[for='${input.id}']`);
-  smallElem.classList.add('error');
-  input.classList.add('error')
-
-};
-
-// Show error
-
-const showError = (input, index, message) => {
-  const formControl = formControlNodeList[index];
-  const small = formControl.querySelector("small");
-
-  formControl.classList.remove("success");
-  formControl.classList.add("error");
-
-  small.classList.remove("hidden");
-  small.textContent = message;
-};
-
-// Show success
-
-const showSuccess = (input, index) => {
-  const formControl = formControlNodeList[index];
-  const small = formControl.querySelector("small");
-
-  formControl.classList.remove("error");
-  formControl.classList.add("success");
-
-  small.classList.remove("hidden");
-  small.textContent = "All good :)";
-};
+// const showError = (input, message) => {
+//   const smallElem = modal.querySelector(`small[for='${input.id}']`);
+//   smallElem.classList.add("error");
+//   input.classList.add("error");
+// };
 
 // ---- Event Handlers ------------------------------------------------
+
+// Event listener on the form for submit event
+modal.addEventListener("submit", (e) => {
+  // prevent default action
+  e.preventDefault();
+  checkRequired(formTitle, ingredients, method);
+  checkLength(formTitle, 3);
+});
 
 // Event listener for Add New Recipe Button (to open modal)
 newRecipeBtn.addEventListener("click", openModal);
@@ -116,20 +134,12 @@ closeModalBtn.addEventListener("click", closeModal);
 // Event listener to overlay (to hide it)
 overlay.addEventListener("click", closeModal);
 
-// Event listener on the form for submit event
-modal.addEventListener("submit", (e) => {
-  // prevent default action
-  e.preventDefault();
-  checkRequired(formTitle, ingredients, method);
-  checkLength(formTitle, 3);
-});
-
 // Event listener to clear the formatting of input boxes when clear button clicked
 clearBtn.addEventListener("click", (e) => {
-  for (let i = 0; i < formControlNodeList.length; i++) {
-    formControlNodeList[i].classList.remove("error");
-    formControlNodeList[i].classList.remove("success");
-
-    smallElNodeList[i].classList.add("hidden");
+  for (let i = 0; i < smallElNodeList.length; i++) {
+    addClass("hidden", smallElNodeList[i]);
   }
+
+  removeClass("error", formTitle, formIngredients, formMethod);
+  removeClass("success", formTitle, formIngredients, formMethod);
 });

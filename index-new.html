@@ -25,13 +25,13 @@
           <h2>New Recipe</h2>
           <button id="close-modal" class="close-modal">&times;</button>
 
-          <div id="form-control" class="form-control">
+          <div class="form-control">
             <label for="title">Recipe title</label>
             <input type="text" id="title" />
-            <small for="title" class="hidden">error message</small>
+            <small id="small-title" class="hidden">error message</small>
           </div>
 
-          <div id="form-control" class="form-control">
+          <div class="form-control">
             <label for="ingredients">Ingredients</label>
             <textarea
               name="ingredients"
@@ -39,13 +39,13 @@
               cols="30"
               rows="10"
             ></textarea>
-            <small class="hidden">error message</small>
+            <small id="small-ingredients" class="hidden">error message</small>
           </div>
 
-          <div id="form-control" class="form-control">
+          <div class="form-control">
             <label for="method">Method</label>
             <textarea name="method" id="method" cols="30" rows="10"></textarea>
-            <small class="hidden">error message</small>
+            <small id="small-method" class="hidden">error message</small>
           </div>
 
           <div class="btn-container">
