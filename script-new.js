@@ -117,6 +117,7 @@ const checkLength = (input, min) => {
 
 // Event listener on the form for submit event
 modal.addEventListener("submit", (e) => {
+  console.log("submit triggered");
   // prevent default action
   e.preventDefault();
   checkRequired(formTitle, ingredients, method);
