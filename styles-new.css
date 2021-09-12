@@ -77,11 +77,22 @@ body {
 }
 
 .recipe-contents section h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .recipe-contents section p {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.delete-btn {
+  cursor: pointer;
+  background-color: #3498db;
+  border: none;
+  color: #fff;
+  border-radius: 0.5rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.1rem;
 }
 
 /* --- Form ---------------------------------------------------- */
@@ -176,7 +187,7 @@ body {
 .button {
   cursor: pointer;
   background-color: #3498db;
-  border: 0.05rem #3498db solid;
+  border: none;
   color: #fff;
   border-radius: 0.5rem;
   padding: 0.4rem 1rem;
