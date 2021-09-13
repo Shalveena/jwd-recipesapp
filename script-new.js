@@ -8,7 +8,7 @@ const clearBtn = document.querySelector("#clear-btn");
 const closeModalBtn = document.querySelector("#close-modal");
 
 // Form elements
-const modal = document.querySelector(".form-container");
+const modal = document.querySelector("#form-container");
 const formTitle = document.querySelector("#title");
 const formIngredients = document.querySelector("#ingredients");
 const formMethod = document.querySelector("#method");
@@ -107,17 +107,29 @@ const checkLength = (input, min) => {
   }
 };
 
-// const showError = (input, message) => {
-//   const smallElem = modal.querySelector(`small[for='${input.id}']`);
-//   smallElem.classList.add("error");
-//   input.classList.add("error");
-// };
+// ---- Adding, Rendering & Deleting Recipes ----
+
+// Add Recipe
+let recipesArr = [];
+let id = 0;
+
+const addRecipe = (recipeTitle, ingredients, method) => {
+  const newRecipe = {
+    id: id++,
+    recipeTitle: recipeTitle,
+    ingredients: ingredients,
+    method: method,
+  };
+
+  recipesArr.push(newRecipe);
+};
+
+//
 
 // ---- Event Handlers ------------------------------------------------
 
 // Event listener on the form for submit event
 modal.addEventListener("submit", (e) => {
-  console.log("submit triggered");
   // prevent default action
   e.preventDefault();
   checkRequired(formTitle, ingredients, method);
