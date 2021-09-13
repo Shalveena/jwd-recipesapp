@@ -130,11 +130,13 @@ let id = 0;
 
 const addRecipe = (title, ingredients, method) => {
   const newRecipe = {
-    id: id++,
+    id: id,
     title: title,
     ingredients: ingredients,
     method: method,
   };
+
+  id += 1;
 
   recipesArr.push(newRecipe);
   console.log(recipesArr);
