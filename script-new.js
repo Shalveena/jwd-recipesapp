@@ -51,6 +51,13 @@ const addClass = (className, ...inputs) => {
   });
 };
 
+// Function to clear input fields
+const clearFields = (...inputs) => {
+  inputs.forEach((input) => {
+    input.value = "";
+  });
+};
+
 // Function to hide text
 
 const hideErrorText = (nodeList) => {
@@ -130,11 +137,14 @@ const addRecipe = (title, ingredients, method) => {
   };
 
   recipesArr.push(newRecipe);
+  console.log(recipesArr);
 };
 
 // Delete Recipe
 
 const deleteRecipe = function (recipeId) {
+  console.log("delete recipe function being called");
+  console.log(recipeId);
   const newRecipesArr = recipesArr.filter((recipe) => recipe.id !== recipeId);
   recipesArr = newRecipesArr;
 };
@@ -142,7 +152,7 @@ const deleteRecipe = function (recipeId) {
 // Create the HTML
 
 const createHTML = (id, title, ingredients, method) => {
-  const html = `<article class="card-container" id="${id}">
+  const html = `<article class="card-container" data-id="${id}">
         <h2 class="recipe-title">${title}</h2>
 
         <div class="recipe-contents">
@@ -155,7 +165,7 @@ const createHTML = (id, title, ingredients, method) => {
             <p>${method}</p>
           </section>
           <section>
-            <button class="delete-btn" type="button">Delete</button>
+            <button class="delete-btn" data-id="${id}" type="button">Delete</button>
           </section>
         </div>
       </article>`;
@@ -167,23 +177,42 @@ const createHTML = (id, title, ingredients, method) => {
 const render = () => {
   let htmlArr = [];
 
-  // For each recipe from recipesArr, make the html and push the html into an array (htmlArr).
+  // For each recipe from recipesArr,
+  // make the html and push the html
+  //into an array (htmlArr).
+
   recipesArr.forEach((recipe) => {
     htmlArr.push(
       createHTML(recipe.id, recipe.title, recipe.ingredients, recipe.method)
     );
   });
 
-  // Then change the actual HTML in index.html. Each element from htmlArr is joined together into a string, each element starting at a new line.
+  // Then change the actual html file.
+  // Each element from htmlArr is joined
+  // into a string,
+  // each element starting at a new line.
+
   let recipesList = document.querySelector("#cards-container");
   recipesList.innerHTML = htmlArr.join("\n");
-};
 
-const clearFields = (...inputs) => {
-  inputs.forEach((input) => {
-    input.value = "";
+  // Create event listener on delete buttons
+  const deleteBtns = recipesList.querySelectorAll(".delete-btn");
+
+  deleteBtns.forEach((deleteBtn) => {
+    deleteBtn.addEventListener("click", (e) => {
+      console.log("Delete button being clicked");
+      deleteRecipe(parseInt(deleteBtn.dataset.id));
+
+      render();
+    });
   });
 };
+
+// ---- Local Storage ----
+
+// Save to Local Storage
+
+// Load from Local Storage
 
 // ---- Event Handlers ------------------------------------------------
 
