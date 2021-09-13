@@ -5,320 +5,100 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <script
-      defer 
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="script.js" defer></script>
-    <title>Yummy Bites</title>
+    <link rel="stylesheet" href="./styles-new.css" />
+    <script src="script-new.js" defer></script>
+    <title>Yummy Bites Two</title>
   </head>
+
   <body>
-    <div class="container mt-4">
-      <header class="text-center row">
-        <div class="col">
-          <h1>Yummy Bites</h1>
+    <div class="container">
+      <header class="header">
+        <h1 class="main-heading">Yummy Bites</h1>
+        <div class="add-recipe-btn-container">
+          <button id="new-recipe-btn" class="add-btn">Add New Recipe</button>
         </div>
       </header>
 
-      <main>
-        <!-- Button trigger modal -->
-        <section class="row mt-5">
-          <div class="text-center">
-            <div class="col">
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#NewRecModal"
-              >
-                Add Recipe
-              </button>
-            </div>
+      <!-- Modal  -->
+      <div id="form-container" class="form-container hidden">
+        <form id="modal" class="modal">
+          <h2>New Recipe</h2>
+          <button type="button" id="close-modal" class="close-modal">
+            &times;
+          </button>
+
+          <div class="form-control">
+            <label for="title">Recipe title</label>
+            <input type="text" id="title" />
+            <small id="small-title" class="hidden">error message</small>
           </div>
-          <!-- MODAL -->
-          <div
-            class="modal fade"
-            id="NewRecModal"
-            tabindex="-1"
-            aria-labelledby="NewRecModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog modal-xl">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="newRecModalLabel">New Recipe</h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="modal-body">
-                  <!-- FORM -->
-                  <form class="form" novalidate>
-                    <div class="mb-3 form-group">
-                      <label for="recipe-title" class="form-label"
-                        >Recipe title</label
-                      >
-                      <input
-                        type="text"
-                        name="recipe-title"
-                        id="recipe-title"
-                        class="form-control"
-                        placeholder="Write recipe title here"
-                        aria-describedby="recipeTitleHelp"
-                        required
-                      />
-                      <div id="recipeTitleHelp" class="form-text">
-                        The recipe's title must not be empty.
-                      </div>
-                      <div class="invalid-feedback">
-                        Please choose a title.
-                      </div>
-                    </div>
 
-                    <div class="mb-3 form-group">
-                      <label for="ingredients" class="form-label"
-                        >Ingredients</label
-                      >
-                      <textarea
-                        name="ingredients"
-                        id="ingredients"
-                        class="form-control"
-                        placeholder="List the ingredients here"
-                        aria-describedby="recipeIngredientsHelp"
-                        rows="20"
-                        required
-                      ></textarea>
-                      <div id="recipeIngredientsHelp" class="form-text">
-                        The recipe's ingredients list must not be empty.
-                      </div>
-                      <div class="invalid-feedback">
-                        Please add ingredients.
-                      </div>
-                    </div>
-
-                    <div class="mb-3 form-group">
-                      <label for="method" class="form-label">Method</label>
-                      <textarea
-                        name="method"
-                        id="method"
-                        class="form-control"
-                        placeholder="Write method for the recipe here"
-                        aria-describedby="recipeMethodHelp"
-                        rows="30"
-                        required
-                      ></textarea>
-                      <div id="recipeMethodHelp" class="form-text">
-                        The recipe's method must not be empty.
-                      </div>
-                      <div class="invalid-feedback">
-                        Please add method.
-                      </div>
-                    </div>
-
-                    <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary add-btn" >
-                      Add
-                    </button>
-                    <button type="reset" class="btn btn-primary" id="reset-btn">
-                      Reset
-                    </button>
-
-                  </form>
-                </div>
-              </div>
-            </div>
+          <div class="form-control">
+            <label for="ingredients">Ingredients</label>
+            <textarea
+              name="ingredients"
+              id="ingredients"
+              cols="30"
+              rows="10"
+            ></textarea>
+            <small id="small-ingredients" class="hidden">error message</small>
           </div>
-        </section>
 
-        <!-- Recipe cards start here -->
-        <div id=recipes-list>
-          <!-- card 1 -->
-          <section class="card my-5">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h4 class="card-title">
-                      Indian inspired chickpeas and kale curry
-                  </h4>
-                </div>
-              </div>
+          <div class="form-control">
+            <label for="method">Method</label>
+            <textarea name="method" id="method" cols="30" rows="10"></textarea>
+            <small id="small-method" class="hidden">error message</small>
+          </div>
 
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-text">Ingredients</h5>
-                  <ul>
-                    <li>1/2 onion, chopped</li>
-                    <li>6 cloves garlic, finely chopped</li>
-                    <li>2 tsp sweet paprika powder</li>
-                    <li>4 tsp cumin powder</li>
-                    <li>1 tsp turmeric</li>
-                    <li>1 tsp salt</li>
-                    <li>2 cans of chickpeas, drained and rinsed</li>
-                    <li>1 cup vegetable broth</li>
-                    <li>4 cups of kale</li>
-                    <li>4 Tbsp olive oil</li>
-                  </ul>
-                </div>
-              </div>
+          <div class="btn-container">
+            <button class="button" type="submit">Add</button>
+            <button id="clear-btn" class="button clear" type="reset">
+              Clear
+            </button>
+          </div>
+        </form>
+      </div>
 
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-text">Method</h5>
-                  <!-- Accordion -->
-                  <div class="accordion accordion-flush" id="accordionFlushCard">
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="flush-headingCard1">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
-                        See more
-                        </button>
-                      </h2>
-                    <div id="flush-collapse1" class="accordion-collapse collapse" aria-labelledby="flush-headingCard1" data-bs-parent="#accordionFlushCard">
-                      <div class="accordion-body">
-                        <ol>
-                          <li>
-                            Heat the olive oil in a frying pan on low heat. When the oil
-                            is warm, add the onions and fry until the onions are soft.
-                          </li>
-                          <li>
-                            Add garlic and continue to fry until the garlic starts to
-                            get crispy/starts to change colour.
-                          </li>
-                          <li>
-                            Add the spices: sweet paprika, cumin and turmeric. Cook for
-                            just a few seconds, careful not to let it burn!
-                          </li>
-                          <li>
-                            Add the chickpeas and cook, uncovered for a few minutes to
-                            allow the chickpeas and spices to fry and come together.
-                          </li>
-                          <li>
-                            Add a dash of water and continue to cook the chickpeas,
-                            covered, allowing them to absorb the flavours. Check from
-                            time to time that the chickpeas are not getting stuck to the
-                            pan; if they are, add some more water as needed.
-                          </li>
-                          <li>
-                            Smash about half of the chickpeas with the back of the
-                            spoon. Add the stock, mix well, cover and let it simmer for
-                            another couple of minutes.
-                          </li>
-                          <li>
-                            Add the kale, cover and cook until the kale is cooked to
-                            your liking. Mix it from time to time to allow the kale to
-                            mix with the rest of the curry and to cook better.
-                          </li>
-                        </ol>
-                      </div>
-                    </div>
-                  </div>
-                  <button type="button" class="btn btn-primary mt-2">Delete</button>
-                </div>
-              </div>
-            </div>
-          </section>
+      <!-- Cards -->
+      <div id="cards-container">
+        <article class="card-container">
+          <h2 class="recipe-title">Indian inspired chickpeas and kale curry</h2>
 
-          <!-- card 2 -->
-          <section class="card my-5">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h4 class="card-title">
-                      Indian inspired chickpeas and kale curry
-                  </h4>
-                </div>
-              </div>
+          <div class="recipe-contents">
+            <section>
+              <h3>Ingredients</h3>
+              <p>Ingredients list</p>
+            </section>
+            <section>
+              <h3>Method</h3>
+              <p>Method explanation</p>
+            </section>
+            <section>
+              <button class="delete-btn" type="button">Delete</button>
+            </section>
+          </div>
+        </article>
 
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-text">Ingredients</h5>
-                  <ul>
-                    <li>1/2 onion, chopped</li>
-                    <li>6 cloves garlic, finely chopped</li>
-                    <li>2 tsp sweet paprika powder</li>
-                    <li>4 tsp cumin powder</li>
-                    <li>1 tsp turmeric</li>
-                    <li>1 tsp salt</li>
-                    <li>2 cans of chickpeas, drained and rinsed</li>
-                    <li>1 cup vegetable broth</li>
-                    <li>4 cups of kale</li>
-                    <li>4 Tbsp olive oil</li>
-                  </ul>
-                </div>
-              </div>
+        <article class="card-container">
+          <h2 class="recipe-title">Indian inspired chickpeas and kale curry</h2>
 
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-text">Method</h5>
-                  <!-- Accordion -->
-                  <div class="accordion accordion-flush" id="accordionFlushCard">
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="flush-headingCard2">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse2" aria-expanded="false" aria-controls="flush-collapse2">
-                        See more
-                        </button>
-                      </h2>
-                    <div id="flush-collapse2" class="accordion-collapse collapse" aria-labelledby="flush-headingCard2" data-bs-parent="#accordionFlushCard">
-                      <div class="accordion-body">
-                        <ol>
-                          <li>
-                            Heat the olive oil in a frying pan on low heat. When the oil
-                            is warm, add the onions and fry until the onions are soft.
-                          </li>
-                          <li>
-                            Add garlic and continue to fry until the garlic starts to
-                            get crispy/starts to change colour.
-                          </li>
-                          <li>
-                            Add the spices: sweet paprika, cumin and turmeric. Cook for
-                            just a few seconds, careful not to let it burn!
-                          </li>
-                          <li>
-                            Add the chickpeas and cook, uncovered for a few minutes to
-                            allow the chickpeas and spices to fry and come together.
-                          </li>
-                          <li>
-                            Add a dash of water and continue to cook the chickpeas,
-                            covered, allowing them to absorb the flavours. Check from
-                            time to time that the chickpeas are not getting stuck to the
-                            pan; if they are, add some more water as needed.
-                          </li>
-                          <li>
-                            Smash about half of the chickpeas with the back of the
-                            spoon. Add the stock, mix well, cover and let it simmer for
-                            another couple of minutes.
-                          </li>
-                          <li>
-                            Add the kale, cover and cook until the kale is cooked to
-                            your liking. Mix it from time to time to allow the kale to
-                            mix with the rest of the curry and to cook better.
-                          </li>
-                        </ol>
-                      </div>
-                    </div>
-                  </div>
-                  </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </main>
+          <div class="recipe-contents">
+            <section>
+              <h3>Ingredients</h3>
+              <p>Ingredients list</p>
+            </section>
+            <section>
+              <h3>Method</h3>
+              <p>Method explanation</p>
+            </section>
+            <section>
+              <button class="delete-btn" type="button">Delete</button>
+            </section>
+          </div>
+        </article>
+      </div>
     </div>
-    <!-- BOOTSTRAP -->
 
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <div id="overlay" class="overlay hidden"></div>
   </body>
 </html>
