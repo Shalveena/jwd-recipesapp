@@ -113,10 +113,10 @@ const checkLength = (input, min) => {
 let recipesArr = [];
 let id = 0;
 
-const addRecipe = (recipeTitle, ingredients, method) => {
+const addRecipe = (title, ingredients, method) => {
   const newRecipe = {
     id: id++,
-    recipeTitle: recipeTitle,
+    recipeTitle: title,
     ingredients: ingredients,
     method: method,
   };
@@ -130,6 +130,33 @@ const deleteRecipe = function (recipeId) {
   const newRecipesArr = recipesArr.filter((recipe) => recipe.id !== recipeId);
   recipesArr = newRecipesArr;
 };
+
+// Create the HTML
+
+const createHTML = (id, title, ingredients, method) => {
+  const html = `<article class="card-container" id="${id}">
+        <h2 class="recipe-title">${title}</h2>
+
+        <div class="recipe-contents">
+          <section>
+            <h3>Ingredients</h3>
+            <p>${ingredients}</p>
+          </section>
+          <section>
+            <h3>Method</h3>
+            <p>${method}</p>
+          </section>
+          <section>
+            <button class="delete-btn" type="button">Delete</button>
+          </section>
+        </div>
+      </article>`;
+  return html;
+};
+
+// Render function
+
+const render = () => {};
 
 // ---- Event Handlers ------------------------------------------------
 
