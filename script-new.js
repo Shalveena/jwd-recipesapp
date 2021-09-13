@@ -203,6 +203,7 @@ const render = () => {
       console.log("Delete button being clicked");
       deleteRecipe(parseInt(deleteBtn.dataset.id));
 
+      saveLocal();
       render();
     });
   });
@@ -212,7 +213,45 @@ const render = () => {
 
 // Save to Local Storage
 
+const saveLocal = () => {
+  // Store the string in localStorage
+  // (key:'recipes', value: 'tasksJson')
+
+  const recipesJson = JSON.stringify(recipesArr);
+  localStorage.setItem("recipes", recipesJson);
+
+  // Convert id variable to string
+  // IMP: need to store the id variable in
+  // local storage because when we later
+  // reload the page, the id variable will
+  // be set to 0 again, but we want to load
+  // from local storage and make sure the
+  // new recipes that are added afterward
+  // don't start with id 0 again.
+
+  const localId = JSON.stringify(id);
+  localStorage.setItem("id", localId);
+};
+
 // Load from Local Storage
+
+const loadLocal = () => {
+  // check if any recipes already
+  // in local storage. If so, get it,
+  // change it back into an array and
+  // assign it to recipesArr.
+
+  if (localStorage.getItem("recipes")) {
+    const recipesJson = localStorage.getItem("recipes");
+    recipesArr = JSON.parse(recipesJson);
+  }
+
+  // do same with id
+  if (localStorage.getItem("id")) {
+    const localId = localStorage.getItem("id");
+    id = parseInt(localId);
+  }
+};
 
 // ---- Event Handlers ------------------------------------------------
 
@@ -236,6 +275,12 @@ modal.addEventListener("submit", (e) => {
   ) {
     addRecipe(formTitle.value, formIngredients.value, formMethod.value);
     render();
+
+    // save to local storage
+
+    saveLocal();
+
+    // close modal and clear form
 
     closeModal();
     removeClass("error", formTitle, formIngredients, formMethod);
@@ -262,4 +307,5 @@ clearBtn.addEventListener("click", (e) => {
   removeClass("success", formTitle, formIngredients, formMethod);
 });
 
+loadLocal();
 render();
