@@ -139,14 +139,11 @@ const addRecipe = (title, ingredients, method) => {
   id += 1;
 
   recipesArr.push(newRecipe);
-  console.log(recipesArr);
 };
 
 // Delete Recipe
 
 const deleteRecipe = function (recipeId) {
-  console.log("delete recipe function being called");
-  console.log(recipeId);
   const newRecipesArr = recipesArr.filter((recipe) => recipe.id !== recipeId);
   recipesArr = newRecipesArr;
 };
@@ -202,7 +199,6 @@ const render = () => {
 
   deleteBtns.forEach((deleteBtn) => {
     deleteBtn.addEventListener("click", (e) => {
-      console.log("Delete button being clicked");
       deleteRecipe(parseInt(deleteBtn.dataset.id));
 
       saveLocal();
