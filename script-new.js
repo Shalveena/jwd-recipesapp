@@ -67,7 +67,7 @@ const showError = (input, message) => {
 
 // Show success
 
-const showSuccess = (input, index) => {
+const showSuccess = (input) => {
   const small = document.querySelector(`#small-${input.id}`);
 
   input.classList.remove("error");
@@ -160,8 +160,9 @@ const render = () => {
   let htmlArr = [];
 
   recipesArr.forEach((recipe) => {
-    createHTML(recipe.id, recipe.title, recipe.ingredients, recipe.method);
-    htmlArr.push(createHTML);
+    htmlArr.push(
+      createHTML(recipe.id, recipe.title, recipe.ingredients, recipe.method)
+    );
   });
 
   let recipesList = document.querySelector("#cards-container");
@@ -174,10 +175,24 @@ const render = () => {
 modal.addEventListener("submit", (e) => {
   // prevent default action
   e.preventDefault();
+
+  // form validation
   checkRequired(formTitle, ingredients, method);
   checkLength(formTitle, 3);
   checkLength(formIngredients, 10);
   checkLength(formMethod, 10);
+
+  // if validation passes, add recipe & render it
+
+  if (
+    formTitle.classList.contains("success") &&
+    formIngredients.classList.contains("success") &&
+    formMethod.classList.contains("success")
+  ) {
+    addRecipe(formTitle.value, formIngredients.value, formMethod.value);
+    render();
+    closeModal();
+  }
 });
 
 // Event listener for Add New Recipe Button (to open modal)
@@ -198,3 +213,5 @@ clearBtn.addEventListener("click", (e) => {
   removeClass("error", formTitle, formIngredients, formMethod);
   removeClass("success", formTitle, formIngredients, formMethod);
 });
+
+render();
