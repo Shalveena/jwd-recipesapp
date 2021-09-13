@@ -124,7 +124,12 @@ const addRecipe = (recipeTitle, ingredients, method) => {
   recipesArr.push(newRecipe);
 };
 
-//
+// Delete Recipe
+
+const deleteRecipe = function (recipeId) {
+  const newRecipesArr = recipesArr.filter((recipe) => recipe.id !== recipeId);
+  recipesArr = newRecipesArr;
+};
 
 // ---- Event Handlers ------------------------------------------------
 
