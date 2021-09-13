@@ -116,7 +116,7 @@ let id = 0;
 const addRecipe = (title, ingredients, method) => {
   const newRecipe = {
     id: id++,
-    recipeTitle: title,
+    title: title,
     ingredients: ingredients,
     method: method,
   };
@@ -156,7 +156,17 @@ const createHTML = (id, title, ingredients, method) => {
 
 // Render function
 
-const render = () => {};
+const render = () => {
+  let htmlArr = [];
+
+  recipesArr.forEach((recipe) => {
+    createHTML(recipe.id, recipe.title, recipe.ingredients, recipe.method);
+    htmlArr.push(createHTML);
+  });
+
+  let recipesList = document.querySelector("#cards-container");
+  recipesList.innerHTML = htmlArr.join("\n");
+};
 
 // ---- Event Handlers ------------------------------------------------
 
