@@ -37,18 +37,26 @@ const closeModal = () => {
 
 // Function to remove class
 
-const removeClass = (text, ...input) => {
-  input.forEach((input) => {
+const removeClass = (text, ...inputs) => {
+  inputs.forEach((input) => {
     input.classList.remove(text);
   });
 };
 
 // Function to add class
 
-const addClass = (text, ...input) => {
-  input.forEach((input) => {
-    input.classList.add(text);
+const addClass = (className, ...inputs) => {
+  inputs.forEach((input) => {
+    input.classList.add(className);
   });
+};
+
+// Function to hide text
+
+const hideErrorText = (nodeList) => {
+  for (let i = 0; i < nodeList.length; i++) {
+    addClass("hidden", nodeList[i]);
+  }
 };
 
 // ---- Validation ----
@@ -159,14 +167,22 @@ const createHTML = (id, title, ingredients, method) => {
 const render = () => {
   let htmlArr = [];
 
+  // For each recipe from recipesArr, make the html and push the html into an array (htmlArr).
   recipesArr.forEach((recipe) => {
     htmlArr.push(
       createHTML(recipe.id, recipe.title, recipe.ingredients, recipe.method)
     );
   });
 
+  // Then change the actual HTML in index.html. Each element from htmlArr is joined together into a string, each element starting at a new line.
   let recipesList = document.querySelector("#cards-container");
   recipesList.innerHTML = htmlArr.join("\n");
+};
+
+const clearFields = (...inputs) => {
+  inputs.forEach((input) => {
+    input.value = "";
+  });
 };
 
 // ---- Event Handlers ------------------------------------------------
@@ -191,7 +207,12 @@ modal.addEventListener("submit", (e) => {
   ) {
     addRecipe(formTitle.value, formIngredients.value, formMethod.value);
     render();
+
     closeModal();
+    removeClass("error", formTitle, formIngredients, formMethod);
+    removeClass("success", formTitle, formIngredients, formMethod);
+    clearFields(formTitle, formIngredients, formMethod);
+    hideErrorText(smallElNodeList);
   }
 });
 
@@ -206,9 +227,7 @@ overlay.addEventListener("click", closeModal);
 
 // Event listener to clear the formatting of input boxes when clear button clicked
 clearBtn.addEventListener("click", (e) => {
-  for (let i = 0; i < smallElNodeList.length; i++) {
-    addClass("hidden", smallElNodeList[i]);
-  }
+  hideErrorText(smallElNodeList);
 
   removeClass("error", formTitle, formIngredients, formMethod);
   removeClass("success", formTitle, formIngredients, formMethod);
