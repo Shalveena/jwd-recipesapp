@@ -23,7 +23,7 @@ I had also been practicing my JavaScript skills by doing katas on codewars and h
 
 ## Challenges
 
-It took me quite a long time, especially to get the design sideo of things done properly - but my oh my, did I learn a lot! It was a great learning experience and helped me solidify a lot of what I had learnt in terms of CSS.
+It took me quite a long time, especially to get the design side of things done properly - but my oh my, did I learn a lot! It was a great learning experience and helped me solidify a lot of what I had learnt in terms of CSS (and JS).
 
 The next challenge was doing the form validation. Validation is done through adding/removing particular classes from various DOM elements.
 
@@ -37,9 +37,11 @@ By re-doing the validation and improving the rest of the code in the JS file, I 
 
 ## Future improvements
 
-I would like to redo this app in the future using REACT. At the moment, the JavaScript file is quite big, which is not ideal. Some of the functions are als quite large and could be broken down into smaller components in future.
+I would like to redo this app in the future using REACT. At the moment, the JavaScript file is quite big, which is not ideal. Using REACT will allow me to break it down into smaller components.
 
 Another thing I'd like to explore is how to get the content in the text area to display on separate lines if that is how the user put it in. For example, if the user writes an ingredients list consisting of multiple lines, the card unfortunately displays it all on one line.
+
+On the design front, I'd like to add media queries, especially to deal with smaller screen sizes. The app is currently responsive, but I feel that it is a bit hacky in terms of the design and not truly a good mobile experience. Making the user experience better on mobile by using media queries will again allow me to practice something that I've had little chance to dive into so far, and I am looking forward to doing it.
 
 ## Details
 
