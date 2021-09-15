@@ -195,7 +195,7 @@ const render = () => {
   const deleteBtns = recipesList.querySelectorAll(".delete-btn");
 
   deleteBtns.forEach((deleteBtn) => {
-    deleteBtn.addEventListener("click", (e) => {
+    deleteBtn.addEventListener("click", () => {
       deleteRecipe(parseInt(deleteBtn.dataset.id));
 
       // Call functions to save to local storage and render again.

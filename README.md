@@ -2,7 +2,7 @@
 
 # Yummy Bites, a recipes app
 
-I made this app as part of the Junior Web Developer Bootcamp run by Generation Australia and Academy Xi. We were given the following requirements and were instructed to create this app in 72 hours.
+I originally made this app as part of the Junior Web Developer Bootcamp run by Generation Australia and Academy Xi. We were given the following requirements and were instructed to create this app in 72 hours.
 
 ## Requirements
 
@@ -13,29 +13,39 @@ I made this app as part of the Junior Web Developer Bootcamp run by Generation A
 5. Recipes should be saved in the browser's local storage.
 6. The code should be readable, reusable and easy to modify.
 
-## Technologies used
+## Version two
 
-Due to the time constraint, I decided to use Bootstrap instead of CSS in order to save time on the design side of things. I wanted to focus my time more on JavaScript as I wanted more practice on that. I used vanilla JavaScript for this project as I have not yet learnt React.
+Originally, I used Bootstrap instead of CSS in the interest of saving some time on the design side of things, and because I wanted to focus my time on JavaScript so that I could practice my JS skills. I also used the form validation provided by Bootstrap as I did not have enough time and skills necessary to do the validation myself from scratch.
 
-## How I met the requirements
+Since finishing the bootcamp, I realised that although I had learnt CSS, I had never put what I learnt about CSS into practice during the bootcamp itself. I was not confident in my ability to design anything using CSS, and felt it was not accurate to put "CSS" as a skill on my CV when I didn't feel confident about my ability on that front. I had also started a Udemy course on CSS and felt it would be good to practice what I was learning.
 
-### Layout of the app
+I had also been practicing my JavaScript skills by doing katas on codewars and had started a JavaScript course on Udemy to learn further. I felt this would be a great time to re-do the app, this time around using CSS instead of Bootstrap and doing the form validation myself.
 
-The starting page of the app is simple - showing only the title and the Add Recipe button.
+## Challenges
 
-    ![Landing page of the website](/images/landingpage.png)
+It took me quite a long time, especially to get the design sideo of things done properly - but my oh my, did I learn a lot! It was a great learning experience and helped me solidify a lot of what I had learnt in terms of CSS.
 
-The Add Recipe button opens up a new modal. I chose to make the modal extra long so that the user can easily fit the ingredients and method of the recipe into it. The modal includes a form that has three input fields, an add button and a reset button.
+The next challenge was doing the form validation. Validation is done through adding/removing particular classes from various DOM elements.
 
-Because recipes could be quite long, I did not wanted to have a way to display only a part of each recipe, so that more recipes could be displayed on the page and less scrolling would be needed by the user. To achieve this, I added an accordion after the heading "Method", so that the title and ingredients of the recipe show by default but the method is hiden inside the accordion. When the user clicks "See more", the accordion is expanded to show the rest of the recipe.
+At the core of the validation process are two functions - checkRequired and checkLength. When the user clicks the button on the form to add a new recipe, first the checkRequired function is called, which checks whether the form's fields are empty or not. If the field is empty, the showError function is called, which adds a class to the DOM element and triggers some CSS styling into action such that the border becomes red and an error message appears. If the field is not empty, the showSuccess function is called, which triggers different CSS styling to indicate that the input is valid.
 
-    ![Closed accordion](images/accordion.png)
+Then, the checkLength function is called, which checks the length of the input against the minimum value specified. Similar to the checkRequired function, this function also calls the showError function if the requirements are not met.
 
-I chose to put the delete button just below the accordion, but make it visible right at the start (without requiring the user to click anything in order to show it). That way, the user can delete recipes with just one click.
+By re-doing the validation and improving the rest of the code in the JS file, I learnt so much and got an opportunity to really hone into the finer details. This has been an invaluable experience, and I am proud of the end result :)
 
-### Validation
+## Future improvements
 
-I used Bootstraps form validation to validate the form. At the moment, due to time constraints, the validation only checks whether the fields are emtpy or not. In future, I would like to add validation to check for minimum length.
+I would like to redo this app in the future using REACT. At the moment, the JavaScript file is quite big, which is not ideal. Some of the functions are als quite large and could be broken down into smaller components in future.
+
+Another thing I'd like to explore is how to get the content in the text area to display on separate lines if that is how the user put it in. For example, if the user writes an ingredients list consisting of multiple lines, the card unfortunately displays it all on one line.
+
+## Details
+
+### Layout
+
+The starting page of the app is simple - showing only the title and the Add New Recipe button.
+
+The Add New Recipe button opens up a new modal. I chose to make the modal quite big because I did not want it to be squished, especially for mobile devices. This also allowed me to have larger input fields so that the user can easily fit the ingredients and method of the recipe into it. The modal includes a form that has three input fields (one input element, and two textarea elements), an add button and a reset button.
 
 ### Requirement: Must be able to add recipes
 
@@ -55,14 +65,10 @@ In order to be able to delete recipes, I first had to give the recipes unique ID
 
 I created a function to delete recipes by using the .filter method. It creates a new array consisting of only the elements that **do not** have the id of the recipe that is being deleted. It then re-assigns the recipes array to this new array that consists of only the undeleted recipes.
 
-In order to call the delete recipes function, I first had to target the right delete button and listen for the click event on it. I found this part very difficult because I did not know how to target one particular delete button amongst many. I decided to select all the delete buttons and then make an event listener for each
-delete button. Then, I determined which button had been clicked by using event.target. I then checked the id of the corresponding recipe and then fed that into the delete recipe function as the argument. I then needed to call the render function again to render the new recipes and to create new event handlers for the delete buttons.
-
-I found out that the above had to be put into the render function otherwise it did not work. This is because each time the render method was called, it changed the innerHTML of the displayed recipes and there were no event handlers on the delete buttons anymore!
+The deleteRecipes function is called from inside the render function. I looped through all the delete buttons and for each delete button, I created an event listener, to listen for a click event. When the button is clicked, the event handler function calls the deleteRecipes function described above. It aso calls the render function and the function to update the local storage.
 
 ### Requirement: save to local storage
 
-Finally, to store to local storage, I made a function that took the recipes array and changed it into a string, added it to local storage, and did the same for the Id. I called the save method after the add recipe method.
+Finally, to store to local storage, I made a function that took the recipes array and changed it into a string, added it to local storage, and did the same for the Id.
 
 Similarly, to load from local storage, I made a function that got the recipes from local storage, changed it back into an array and put it back into the recipes array. It did the same with the Id (parsing it into a number instead of an array though).
-I called the load method before the render method.
