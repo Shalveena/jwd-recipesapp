@@ -31,6 +31,8 @@ At the core of the validation process are two functions - checkRequired and chec
 
 Then, the checkLength function is called, which checks the length of the input against the minimum value specified. Similar to the checkRequired function, this function also calls the showError function if the requirements are not met.
 
+Since I was not using Bootstrap, I also had to write the code for the modal functionality myself. This meant that I had to figure out how to open and close the modal. Again, I did this by using JS together with CSS: to open the modal, I wrote a function that added a class "hidden" to the modal, and vice versa to close it. On the CSS side of things, I wrote a CSS ruleset that changed the visibility of elements that had the class "hidden".
+
 By re-doing the validation and improving the rest of the code in the JS file, I learnt so much and got an opportunity to really hone into the finer details. This has been an invaluable experience, and I am proud of the end result :)
 
 ## Future improvements
