@@ -15,7 +15,7 @@ I originally made this app as part of the Junior Web Developer Bootcamp run by G
 
 ## Version two
 
-Originally, I used Bootstrap instead of CSS in the interest of saving some time on the design side of things, and because I wanted to focus my time on JavaScript so that I could practice my JS skills. I also used the form validation provided by Bootstrap as I did not have enough time and skills necessary to do the validation myself from scratch.
+Originally, I used Bootstrap instead of CSS in the interest of saving some time on the design side of things, and because I wanted to focus my time on JavaScript. I also used the form validation provided by Bootstrap as I did not have enough time and skills necessary to do the validation myself from scratch.
 
 Since finishing the bootcamp, I realised that although I had learnt CSS, I had never put what I learnt about CSS into practice during the bootcamp itself. I was not confident in my ability to design anything using CSS, and felt it was not accurate to put "CSS" as a skill on my CV when I didn't feel confident about my ability on that front. I had also started a Udemy course on CSS and felt it would be good to practice what I was learning.
 
