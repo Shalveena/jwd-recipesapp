@@ -253,7 +253,8 @@ modal.addEventListener("submit", (e) => {
   e.preventDefault();
 
   // form validation
-  checkRequired(formTitle, ingredients, method);
+
+  checkRequired(formTitle, formIngredients, formMethod);
   checkLength(formTitle, 3);
   checkLength(formIngredients, 10);
   checkLength(formMethod, 10);

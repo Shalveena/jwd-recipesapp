@@ -1,5 +1,3 @@
-# jwd-recipesapp
-
 # Yummy Bites, a recipes app
 
 I originally made this app as part of the Junior Web Developer Bootcamp run by Generation Australia and Academy Xi. We were given the following requirements and were instructed to create this app in 72 hours.
